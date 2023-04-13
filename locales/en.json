@@ -1,0 +1,12 @@
+{
+    "text.enter_house": "~g~E~w~ - Enter House",
+    "text.enter_requirements": "Lockpick | Screwdriver set",
+    "text.leave_house": "~g~E~w~ - Leave House",
+    "text.search": "~g~E~w~ - Search Around",
+    "text.pickup": "~g~E~w~ - Grab %{Item}",
+    "notify.no_police": "Not Enough Police (%{Required} Required)",
+    "notify.fail_skillcheck": "Failed Skillcheck",
+    "notify.success_skillcheck": "Successful Skillcheck",
+    "notify.busy": "Someone is already on it",
+    "notify.police_alert": "Suspicious activity near owned property"
+}

@@ -1,4 +1,4 @@
-# qb-houserobbery
+# houserobbery
 House Robberies For QB-Core
 
 - [ ] Alarm system

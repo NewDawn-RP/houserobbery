@@ -1,4 +1,5 @@
-local QBCore = exports['qbx-core']:GetCoreObject()
+lib.locale()
+local Items = exports.ox_inventory:Items()
 local House = 1
 
 local function DrawText3D(coords, text)
@@ -29,23 +30,23 @@ CreateThread(function()
                 Nearby = true
                 House = i
                 if Config.UseDrawText then
-                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(Lang:t('text.enter_house')) end
+                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.enter_house')) end
                 else
-                    DrawText3D(Config.Houses[i].coords, Lang:t('text.enter_house'))
+                    DrawText3D(Config.Houses[i].coords, locale('text.enter_house'))
                 end
                 if IsControlJustReleased(0, 38) then
                     LoadAnimDict('anim@heists@keycard@')
                     TaskPlayAnim(cache.ped, 'anim@heists@keycard@', 'exit', 5.0, 1.0, -1, 16, 0, false, false, false)
-                    TriggerServerEvent('qb-houserobbery:server:enterHouse', i)
+                    TriggerServerEvent('houserobbery:server:enterHouse', i)
                     RemoveAnimDict('anim@heists@keycard@')
                 end
             elseif #(PlayerCoords - Config.Houses[i].coords) <= 1.6 and not Config.Houses[i].opened then
                 WaitTime = 0
                 Nearby = true
                 if Config.UseDrawText then
-                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(Lang:t('text.enter_requirements')) end
+                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.enter_requirements')) end
                 else
-                    DrawText3D(Config.Houses[i].coords, Lang:t('text.enter_requirements'))
+                    DrawText3D(Config.Houses[i].coords, locale('text.enter_requirements'))
                 end
             end
         end
@@ -66,14 +67,14 @@ CreateThread(function()
                 WaitTime = 0
                 Nearby = true
                 if Config.UseDrawText then
-                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(Lang:t('text.leave_house')) end
+                    if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.leave_house')) end
                 else
-                    DrawText3D(Exit, Lang:t('text.leave_house'))
+                    DrawText3D(Exit, locale('text.leave_house'))
                 end
                 if IsControlJustReleased(0, 38) then
                     LoadAnimDict('anim@heists@keycard@')
                     TaskPlayAnim(cache.ped, 'anim@heists@keycard@', 'exit', 5.0, 1.0, -1, 16, 0, false, false, false)
-                    TriggerServerEvent('qb-houserobbery:server:leaveHouse')
+                    TriggerServerEvent('houserobbery:server:leaveHouse')
                     RemoveAnimDict('anim@heists@keycard@')
                 end
             end
@@ -95,15 +96,15 @@ CreateThread(function()
                     WaitTime = 0
                     Nearby = true
                     if Config.UseDrawText then
-                        if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(Lang:t('text.search')) end
+                        if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.search')) end
                     else
-                        DrawText3D(Config.Houses[House].loot[i].coords, Lang:t('text.search'))
+                        DrawText3D(Config.Houses[House].loot[i].coords, locale('text.search'))
                     end
                     if IsControlJustReleased(0, 38) then
-                        if not QBCore.Functions.IsWearingGloves() then
-                            if Config.FingerDropChance > math.random(0, 100) then TriggerServerEvent('evidence:server:CreateFingerDrop', GetEntityCoords(cache.ped)) end
-                        end
-                        lib.callback('qb-houserobbery:callback:checkLoot', false, function(CanStart)
+                        -- if not QBCore.Functions.IsWearingGloves() then
+                        --     if Config.FingerDropChance > math.random(0, 100) then TriggerServerEvent('evidence:server:CreateFingerDrop', GetEntityCoords(cache.ped)) end
+                        -- end
+                        lib.callback('houserobbery:callback:checkLoot', false, function(CanStart)
                             if not CanStart then return end
                             if lib.progressCircle({
                                 duration = math.random(4000, 8000),
@@ -120,9 +121,9 @@ CreateThread(function()
                                     blendIn = 1.0
                                 },
                             }) then
-                                TriggerServerEvent('qb-houserobbery:server:lootFinished', House, i)
+                                TriggerServerEvent('houserobbery:server:lootFinished', House, i)
                             else
-                                TriggerServerEvent('qb-houserobbery:server:lootCancelled', House, i)
+                                TriggerServerEvent('houserobbery:server:lootCancelled', House, i)
                             end
                         end, House, i)
                     end
@@ -146,15 +147,15 @@ CreateThread(function()
                     WaitTime = 0
                     Nearby = true
                     if Config.UseDrawText then
-                        if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(Lang:t('text.pickup', { Item = QBCore.Shared.Items[Config.Houses[House].pickups[i].reward]['label'] })) end
+                        if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] })) end
                     else
-                        DrawText3D(Config.Houses[House].pickups[i].coords, Lang:t('text.pickup', { Item = QBCore.Shared.Items[Config.Houses[House].pickups[i].reward]['label'] }))
+                        DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] }))
                     end
                     if IsControlJustReleased(0, 38) then
-                        if not QBCore.Functions.IsWearingGloves() then
-                            if Config.FingerDropChance > math.random(0, 100) then TriggerServerEvent('evidence:server:CreateFingerDrop', GetEntityCoords(cache.ped)) end
-                        end
-                        lib.callback('qb-houserobbery:callback:checkPickup', false, function(CanStart)
+                        -- if not QBCore.Functions.IsWearingGloves() then
+                        --     if Config.FingerDropChance > math.random(0, 100) then TriggerServerEvent('evidence:server:CreateFingerDrop', GetEntityCoords(cache.ped)) end
+                        -- end
+                        lib.callback('houserobbery:callback:checkPickup', false, function(CanStart)
                             if not CanStart then return end
                             if lib.progressCircle({
                                 duration = math.random(4000, 8000),
@@ -171,9 +172,9 @@ CreateThread(function()
                                     blendIn = 1.0
                                 },
                             }) then
-                                TriggerServerEvent('qb-houserobbery:server:pickupFinished', House, i)
+                                TriggerServerEvent('houserobbery:server:pickupFinished', House, i)
                             else
-                                TriggerServerEvent('qb-houserobbery:server:pickupCancelled', House, i)
+                                TriggerServerEvent('houserobbery:server:pickupCancelled', House, i)
                             end
                         end, House, i)
                     end
@@ -191,7 +192,7 @@ CreateThread(function()
     end
 end)
 
-lib.callback.register('qb-houserobbery:callback:startSkillcheck', function(Difficulty)
+lib.callback.register('houserobbery:callback:startSkillcheck', function(Difficulty)
     LoadAnimDict('veh@break_in@0h@p_m_one@')
     TaskPlayAnim(cache.ped, 'veh@break_in@0h@p_m_one@', 'std_force_entry_rds', 3.0, 3.0, -1, 17, 0, false, false, false)
     local Success = lib.skillCheck(Difficulty)
@@ -200,7 +201,7 @@ lib.callback.register('qb-houserobbery:callback:startSkillcheck', function(Diffi
     return Success
 end)
 
-lib.callback.register('qb-houserobbery:callback:checkTime', function()
+lib.callback.register('houserobbery:callback:checkTime', function()
     local CurrentHour = GetClockHours()
     if CurrentHour >= Config.Hours.Start or CurrentHour <= Config.Hours.End then
         return true
@@ -209,7 +210,7 @@ lib.callback.register('qb-houserobbery:callback:checkTime', function()
     end
 end)
 
-RegisterNetEvent('qb-houserobbery:client:syncconfig', function(Data, Index)
+RegisterNetEvent('houserobbery:client:syncconfig', function(Data, Index)
     if Index then
         Config.Houses[Index] = Data
     else

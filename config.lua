@@ -5,10 +5,11 @@ Config.Hours = {
     End = 5
 }
 Config.FingerDropChance = 50
-Config.MinimumHouseRobberyPolice = 2
+Config.MinimumHouseRobberyPolice = 0
 Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
-Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
+--Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
+Config.RequiredItems = { 'bread' }
 
 -- Each key is it's own 'pool'. You can create as many as you want and add them to Config.Interiors per loot spot you add.
 -- togive determines how many random unique items to give. toget determines the amount of said unique item you should get
@@ -97,7 +98,7 @@ Config.Houses = {
     [1] = {
         routingbucket = 600,
         interior = 1,
-        opened = false,
+        opened = true,
         coords = vector3(495.25, -1823.31, 28.87),
         setup = {
             loot = {
