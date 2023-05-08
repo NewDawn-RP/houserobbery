@@ -1,12 +1,12 @@
 {
-    "text.enter_house": "~g~E~w~ - Enter House",
-    "text.enter_requirements": "Lockpick | Screwdriver set",
-    "text.leave_house": "~g~E~w~ - Leave House",
-    "text.search": "~g~E~w~ - Search Around",
-    "text.pickup": "~g~E~w~ - Grab %{Item}",
-    "notify.no_police": "Not Enough Police (%{Required} Required)",
-    "notify.fail_skillcheck": "Failed Skillcheck",
-    "notify.success_skillcheck": "Successful Skillcheck",
-    "notify.busy": "Someone is already on it",
-    "notify.police_alert": "Suspicious activity near owned property"
+    "text.enter_house": "~g~E~w~ - Penêtrer dans la Maison",
+    "text.enter_requirements": "Vous avez besoin d'un Kit de crochetage",
+    "text.leave_house": "~g~E~w~ - Quitter Maison",
+    "text.search": "~g~E~w~ - Fouiller",
+    "text.pickup": "~g~E~w~ - Prendre %s",
+    "notify.no_police": "Pas assez de policiers (%s Requis)",
+    "notify.fail_skillcheck": "Crochetage raté !",
+    "notify.success_skillcheck": "Crochetage réussi !",
+    "notify.busy": "Quelqu'un est déjà dessus",
+    "notify.police_alert": "Activité suspecte autour d'une habitation"
 }

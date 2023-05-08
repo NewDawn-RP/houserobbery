@@ -138,7 +138,7 @@ end)
 CreateThread(function()
     local HasShownText
     while true do
-        local PlayerCoords = GetEntityCoords(cache.ped)
+        local PlayerCoords = GetEntityCoords(cache.ped or PlayerPedId())
         local WaitTime = 800
         local Nearby = false
         if Config.Houses[House].opened and Config.Houses[House].pickups[1] then
@@ -149,7 +149,8 @@ CreateThread(function()
                     if Config.UseDrawText then
                         if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] })) end
                     else
-                        DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] }))
+                        --DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] }))
+                        DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]["label"] }))
                     end
                     if IsControlJustReleased(0, 38) then
                         -- if not QBCore.Functions.IsWearingGloves() then

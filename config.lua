@@ -9,18 +9,26 @@ Config.MinimumHouseRobberyPolice = 0
 Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
 --Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
-Config.RequiredItems = { 'bread' }
+Config.RequiredItems = { 'lockpick' }
 
 -- Each key is it's own 'pool'. You can create as many as you want and add them to Config.Interiors per loot spot you add.
 -- togive determines how many random unique items to give. toget determines the amount of said unique item you should get
+-- Config.Rewards = {
+--     { items = { 'metalscrap', 'plastic', 'copper', 'iron', 'aluminum', 'steel', 'glass' }, togive = { min = 2, max = 5 }, toget = { min = 2, max = 5 } },
+--     { items = { 'diamond_ring', 'goldchain', 'rolex', '10kgoldchain' }, togive = { min = 1, max = 2 }, toget = { min = 1, max = 2 } },
+--     { items = { 'bandage', 'repairkit', 'cleaningkit' }, togive = { min = 1, max = 2 }, toget = { min = 2, max = 5 } },
+--     { items = { 'weed_white-widow', 'weed_skunk', 'weed_purple-haze', 'weed_og-kush', 'weed_amnesia', 'weed_ak47' }, togive = { min = 1, max = 2 }, toget = { min = 3, max = 8 } },
+--     { items = { 'metalscrap', 'plastic', 'copper', 'iron', 'aluminum', 'steel', 'glass' }, togive = { min = 3, max = 6 }, toget = { min = 6, max = 15 } },
+--     { items = { 'diamond_ring', 'goldchain', 'rolex', '10kgoldchain' }, togive = { min = 1, max = 3 }, toget = { min = 2, max = 5 } },
+--     { items = { 'weed_white-widow', 'weed_skunk', 'weed_purple-haze', 'weed_og-kush', 'weed_amnesia', 'weed_ak47' }, togive = { min = 3, max = 6 }, toget = { min = 5, max = 18 } },
+-- }
+
 Config.Rewards = {
-    { items = { 'metalscrap', 'plastic', 'copper', 'iron', 'aluminum', 'steel', 'glass' }, togive = { min = 2, max = 5 }, toget = { min = 2, max = 5 } },
-    { items = { 'diamond_ring', 'goldchain', 'rolex', '10kgoldchain' }, togive = { min = 1, max = 2 }, toget = { min = 1, max = 2 } },
-    { items = { 'bandage', 'repairkit', 'cleaningkit' }, togive = { min = 1, max = 2 }, toget = { min = 2, max = 5 } },
-    { items = { 'weed_white-widow', 'weed_skunk', 'weed_purple-haze', 'weed_og-kush', 'weed_amnesia', 'weed_ak47' }, togive = { min = 1, max = 2 }, toget = { min = 3, max = 8 } },
-    { items = { 'metalscrap', 'plastic', 'copper', 'iron', 'aluminum', 'steel', 'glass' }, togive = { min = 3, max = 6 }, toget = { min = 6, max = 15 } },
-    { items = { 'diamond_ring', 'goldchain', 'rolex', '10kgoldchain' }, togive = { min = 1, max = 3 }, toget = { min = 2, max = 5 } },
-    { items = { 'weed_white-widow', 'weed_skunk', 'weed_purple-haze', 'weed_og-kush', 'weed_amnesia', 'weed_ak47' }, togive = { min = 3, max = 6 }, toget = { min = 5, max = 18 } },
+    { items = { 'soda', 'bread', 'water', 'bread', 'water' }, togive = { min = 2, max = 3 }, toget = { min = 2, max = 5 } },
+    { items = { 'rolex', 'ring', 'jewels', 'bread', 'water'}, togive = { min = 1, max = 1 }, toget = { min = 1, max = 2 } },
+    { items = { 'iron', 'copper', 'diamond', 'bread', 'water' }, togive = { min = 1, max = 1 }, toget = { min = 1, max = 2 } },
+    { items = { 'black_money' }, togive = { min = 1, max = 1 }, toget = { min = 500, max = 1500 } },
+    { items = { "weapon_bat", "weapon_crowbar", "tequila", 'bread', 'water' }, togive = { min = 1, max = 1 }, toget = { min = 1, max = 1 } },
 }
 
 -- Pre set interiors to use in Config.Houses. Shouldn't touch this unless you know what you are doing. You can however change the skillcheck difficulty.
@@ -36,7 +44,7 @@ Config.Interiors = {
             { coords = vector3(263.69, -995.40, -99.01), pool = {1, 2, 4} },
             { coords = vector3(262.67, -999.88, -99.01), pool = {1, 3, 4} },
             { coords = vector3(257.01, -995.84, -99.01), pool = {1, 2, 3, 4} },
-            { coords = vector3(256.73, -998.34, -99.01), pool = {1, 2, 3, 4} },
+            { coords = vector3(256.73, -998.34, -99.01), pool = {1, 2} },
             { coords = vector3(259.98, -1004.0, -99.01), pool = {1, 2, 4} }
         },
         pickups = {
@@ -48,19 +56,33 @@ Config.Interiors = {
         exit = vector4(346.55, -1012.83, -99.2, 5.8),
         skillcheck = { 'medium', 'easy', 'hard', 'medium' },
         callCopsTimeout = 25000,
+        -- loot = {
+        --     { coords = vector3(346.15, -1001.71, -99.2), pool = {1, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(345.01, -995.49, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(341.97, -997.45, -99.2), pool = {1, 2, 4, 5, 6, 7} },
+        --     { coords = vector3(340.69, -995.03, -99.2), pool = {1, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(338.35, -995.22, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(338.31, -997.88, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(339.71, -1000.35, -99.2), pool = {1, 2, 4, 5, 6, 7} },
+        --     { coords = vector3(338.6, -1003.18, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(351.13, -999.23, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(351.31, -993.76, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(349.36, -995.05, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        --     { coords = vector3(347.5, -994.17, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+        -- },
         loot = {
-            { coords = vector3(346.15, -1001.71, -99.2), pool = {1, 3, 4, 5, 6, 7} },
-            { coords = vector3(345.01, -995.49, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(341.97, -997.45, -99.2), pool = {1, 2, 4, 5, 6, 7} },
-            { coords = vector3(340.69, -995.03, -99.2), pool = {1, 3, 4, 5, 6, 7} },
-            { coords = vector3(338.35, -995.22, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(338.31, -997.88, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(339.71, -1000.35, -99.2), pool = {1, 2, 4, 5, 6, 7} },
-            { coords = vector3(338.6, -1003.18, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(351.13, -999.23, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(351.31, -993.76, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(349.36, -995.05, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(347.5, -994.17, -99.2), pool = {1, 2, 3, 4, 5, 6, 7} },
+            { coords = vector3(346.15, -1001.71, -99.2), pool = {1, 3, 4 } },
+            { coords = vector3(345.01, -995.49, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(341.97, -997.45, -99.2), pool = {1, 2, 4} },
+            { coords = vector3(340.69, -995.03, -99.2), pool = {1, 3, 4} },
+            { coords = vector3(338.35, -995.22, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(338.31, -997.88, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(339.71, -1000.35, -99.2), pool = {1, 2, 4} },
+            { coords = vector3(338.6, -1003.18, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(351.13, -999.23, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(351.31, -993.76, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(349.36, -995.05, -99.2), pool = {1, 2, 3, 4} },
+            { coords = vector3(347.5, -994.17, -99.2), pool = {1, 2, 3, 4} },
         },
         pickups = {
             { coords = vector3(344.14, -1002.33, -99.2), model = 'prop_micro_01', reward = 'microwave' },
@@ -72,20 +94,20 @@ Config.Interiors = {
         skillcheck = { 'hard', 'medium', 'hard', 'medium' },
         callCopsTimeout = 20000,
         loot = {
-            { coords = vector3(-170.21, 495.82, 137.65), pool = {1, 3, 4, 5, 6, 7} },
-            { coords = vector3(-168.18, 494.13, 137.65), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-171.02, 486.88, 137.44), pool = {1, 2, 4, 5, 6, 7} },
-            { coords = vector3(-163.0, 482.49, 137.27), pool = {1, 3, 4, 5, 6, 7} },
-            { coords = vector3(-164.44, 487.09, 137.44), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-170.32, 482.18, 133.85), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-162.86, 482.02, 133.87), pool = {1, 2, 4, 5, 6, 7} },
-            { coords = vector3(-167.4, 487.85, 133.84), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-165.71, 495.38, 133.85), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-172.71, 500.42, 130.04), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-174.45, 496.08, 130.04), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-170.01, 491.14, 130.04), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-174.03, 493.64, 130.04), pool = {1, 2, 3, 4, 5, 6, 7} },
-            { coords = vector3(-175.79, 492.05, 130.04), pool = {1, 2, 3, 4, 5, 6, 7} },
+            { coords = vector3(-170.21, 495.82, 137.65), pool = {1, 3, 4} },
+            { coords = vector3(-168.18, 494.13, 137.65), pool = {1, 2, 3, 4} },
+            { coords = vector3(-171.02, 486.88, 137.44), pool = {1, 2, 4} },
+            { coords = vector3(-163.0, 482.49, 137.27), pool = {1, 3, 4} },
+            { coords = vector3(-164.44, 487.09, 137.44), pool = {1, 2, 3, 4} },
+            { coords = vector3(-170.32, 482.18, 133.85), pool = {1, 2, 3, 4} },
+            { coords = vector3(-162.86, 482.02, 133.87), pool = {1, 2, 4} },
+            { coords = vector3(-167.4, 487.85, 133.84), pool = {1, 2, 3, 4} },
+            { coords = vector3(-165.71, 495.38, 133.85), pool = {1, 2, 3, 4} },
+            { coords = vector3(-172.71, 500.42, 130.04), pool = {1, 2, 3, 4} },
+            { coords = vector3(-174.45, 496.08, 130.04), pool = {1, 2, 3, 4} },
+            { coords = vector3(-170.01, 491.14, 130.04), pool = {1, 2, 3, 4} },
+            { coords = vector3(-174.03, 493.64, 130.04), pool = {1, 2, 3, 4} },
+            { coords = vector3(-175.79, 492.05, 130.04), pool = {1, 2, 3, 4} },
         },
         pickups = {
             { coords = vector3(-165.26, 495.01, 137.65), model = 'prop_micro_02', reward = 'microwave' },
@@ -98,7 +120,7 @@ Config.Houses = {
     [1] = {
         routingbucket = 600,
         interior = 1,
-        opened = true,
+        opened = false,
         coords = vector3(495.25, -1823.31, 28.87),
         setup = {
             loot = {

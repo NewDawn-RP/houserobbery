@@ -74,8 +74,9 @@ AddEventHandler('lockpicks:UseLockpick', function(PlayerSource, IsAdvanced)
 
     if not House then return end
     if House.opened then return end
-    if not IsAdvanced and not Player.Functions.GetItemByName(Config.RequiredItems[2]) then return end
-    if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', PlayerSource, locale('notify.no_police', { Required = Config.MinimumHouseRobberyPolice }), 'error') end return end
+    --if not IsAdvanced and not Player.Functions.GetItemByName(Config.RequiredItems[2]) then return end
+    --if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', PlayerSource, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
+    if -1 < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', PlayerSource, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
 
     local Result = lib.callback.await('houserobbery:callback:checkTime', PlayerSource)
 
@@ -88,9 +89,51 @@ AddEventHandler('lockpicks:UseLockpick', function(PlayerSource, IsAdvanced)
         TriggerClientEvent('esx:showNotification', PlayerSource, locale('notify.success_skillcheck'), 'success')
         TriggerClientEvent('houserobbery:client:syncconfig', -1, Config.Houses[ClosestHouseIndex], ClosestHouseIndex)
         EnterHouse(PlayerSource, Config.Interiors[House.interior].exit, House.routingbucket, ClosestHouseIndex)
-        PoliceAlert(locale('notify.police_alert'), House)
+        --PoliceAlert(locale('notify.police_alert'), House)
+        exports['ps-dispatch-esx']:HouseRobbery()
     else
         TriggerClientEvent('esx:showNotification', PlayerSource, locale('notify.fail_skillcheck'), 'error')
+    end
+end)
+
+exports('houselockpick', function(event, item, inventory, slot, data)
+    
+    if event == 'usedItem' then
+        local Player = ESX.GetPlayerFromId(inventory.id)
+        local PlayerCoords = GetEntityCoords(GetPlayerPed(Player.source))
+        local ClosestHouseIndex = GetClosestHouse(PlayerCoords)
+        local House = Config.Houses[ClosestHouseIndex]
+        --local Amount = QBCore.Functions.GetDutyCountType('leo')
+    
+        if not House then return end
+        if House.opened then return end
+        --if not IsAdvanced and not Player.Functions.GetItemByName(Config.RequiredItems[2]) then return end
+        --if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
+        if 1 < Config.MinimumHouseRobberyPolice then 
+            if Config.NotEnoughCopsNotify then 
+                TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') 
+            end 
+            return 
+        end
+    
+        local Result = lib.callback.await('houserobbery:callback:checkTime', Player.source)
+    
+        if not Result then return end
+    
+        local Skillcheck = lib.callback.await('houserobbery:callback:startSkillcheck', Player.source, Config.Interiors[House.interior].skillcheck)
+    
+        if Skillcheck then
+            Config.Houses[ClosestHouseIndex].opened = true
+            TriggerClientEvent('ox_lib:notify', Player.source, {description = locale('notify.success_skillcheck'), title = "Réussite !", type = "success"})
+            TriggerClientEvent('houserobbery:client:syncconfig', -1, Config.Houses[ClosestHouseIndex], ClosestHouseIndex)
+            EnterHouse(Player.source, Config.Interiors[House.interior].exit, House.routingbucket, ClosestHouseIndex)
+            --PoliceAlert(locale('notify.police_alert'), House)
+            TriggerClientEvent("ps-dispatch:client:houserobbery", Player.source, Config.Houses[ClosestHouseIndex].coords)
+        else
+            TriggerClientEvent('ox_lib:notify', Player.source, {description = locale('notify.fail_skillcheck'), title = "Erreur !", type = "error"})
+
+            --TriggerClientEvent('esx:showNotification', Player.source, locale('notify.fail_skillcheck'), 'error')
+        end
     end
 end)
 
