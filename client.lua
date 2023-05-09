@@ -149,7 +149,7 @@ CreateThread(function()
                     if Config.UseDrawText then
                         if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] })) end
                     else
-                        DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]["label"] }))
+                        DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', Items[Config.Houses[House].pickups[i].reward]["label"]))
                     end
                     if IsControlJustReleased(0, 38) then
                         -- if not QBCore.Functions.IsWearingGloves() then
@@ -215,5 +215,48 @@ RegisterNetEvent('houserobbery:client:syncconfig', function(Data, Index)
         Config.Houses[Index] = Data
     else
         Config.Houses = Data
+    end
+end)
+
+function CreatePublicBlip(coords, text, sprite, color, scale)
+	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+
+	SetBlipSprite(blip, sprite)
+	SetBlipScale(blip, scale)
+	SetBlipColour(blip, color)
+    SetBlipDisplay(blip, 5)
+	SetBlipAsShortRange(blip, true)
+
+	BeginTextCommandSetBlipName('STRING')
+	AddTextComponentSubstringPlayerName(text)
+	EndTextCommandSetBlipName(blip)
+
+    return blip
+end
+
+local Blips = {}
+
+function InitHouseBlips()
+	for key, blip in pairs(Config.Houses) do
+        Blips[key] = CreatePublicBlip(blip.coords, "Cambriolage", 119, 1, 0.8)
+    end
+end
+
+CreateThread(function()
+    InitHouseBlips()
+end)
+
+function ClearBlips()
+    for k, blip in pairs(Blips) do
+        if blip then
+            RemoveBlip(blip)
+        end
+    end
+end
+
+AddEventHandler('onClientResourceStart', function(resourceName)
+    if (GetCurrentResourceName() == resourceName) then
+        ClearBlips()
+        InitHouseBlips()
     end
 end)

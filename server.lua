@@ -96,8 +96,7 @@ AddEventHandler('lockpicks:UseLockpick', function(PlayerSource, IsAdvanced)
     end
 end)
 
-exports('houselockpick', function(event, item, inventory, slot, data)
-    
+exports('houselockpick', function(event, item, inventory, slot, data)    
     if event == 'usedItem' then
         local Player = ESX.GetPlayerFromId(inventory.id)
         local PlayerCoords = GetEntityCoords(GetPlayerPed(Player.source))
