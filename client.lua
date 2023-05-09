@@ -149,7 +149,6 @@ CreateThread(function()
                     if Config.UseDrawText then
                         if not HasShownText then HasShownText = true exports['qbx-core']:DrawText(locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] })) end
                     else
-                        --DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]['label'] }))
                         DrawText3D(Config.Houses[House].pickups[i].coords, locale('text.pickup', { Item = Items[Config.Houses[House].pickups[i].reward]["label"] }))
                     end
                     if IsControlJustReleased(0, 38) then
