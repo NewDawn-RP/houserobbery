@@ -1,8 +1,8 @@
 Config = {}
 
 Config.Hours = {
-    Start = 22,
-    End = 5
+    Start = 15,
+    End = 3,
 }
 
 Config.EnableHouseBlips = false
