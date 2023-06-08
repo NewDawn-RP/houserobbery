@@ -4,8 +4,11 @@ Config.Hours = {
     Start = 22,
     End = 5
 }
+
+Config.EnableHouseBlips = false
+
 Config.FingerDropChance = 50
-Config.MinimumHouseRobberyPolice = 0
+Config.MinimumHouseRobberyPolice = 4
 Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
 --Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }

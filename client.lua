@@ -234,11 +234,13 @@ function CreatePublicBlip(coords, text, sprite, color, scale)
     return blip
 end
 
-local Blips = {}
+if Config.EnableHouseBlips then
+    local Blips = {}
 
-function InitHouseBlips()
-	for key, blip in pairs(Config.Houses) do
-        Blips[key] = CreatePublicBlip(blip.coords, "Cambriolage", 119, 1, 0.8)
+    function InitHouseBlips()
+        for key, blip in pairs(Config.Houses) do
+            Blips[key] = CreatePublicBlip(blip.coords, "Cambriolage", 119, 1, 0.8)
+        end
     end
 end
 
