@@ -244,9 +244,11 @@ if Config.EnableHouseBlips then
     end
 end
 
-CreateThread(function()
-    InitHouseBlips()
-end)
+if Config.EnableHouseBlips then
+    CreateThread(function()
+        InitHouseBlips()
+    end)
+end
 
 function ClearBlips()
     for k, blip in pairs(Blips) do
