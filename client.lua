@@ -217,24 +217,23 @@ RegisterNetEvent('houserobbery:client:syncconfig', function(Data, Index)
         Config.Houses = Data
     end
 end)
-
-function CreatePublicBlip(coords, text, sprite, color, scale)
-	local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-
-	SetBlipSprite(blip, sprite)
-	SetBlipScale(blip, scale)
-	SetBlipColour(blip, color)
-    SetBlipDisplay(blip, 5)
-	SetBlipAsShortRange(blip, true)
-
-	BeginTextCommandSetBlipName('STRING')
-	AddTextComponentSubstringPlayerName(text)
-	EndTextCommandSetBlipName(blip)
-
-    return blip
-end
-
 if Config.EnableHouseBlips then
+    function CreatePublicBlip(coords, text, sprite, color, scale)
+        local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
+
+        SetBlipSprite(blip, sprite)
+        SetBlipScale(blip, scale)
+        SetBlipColour(blip, color)
+        SetBlipDisplay(blip, 5)
+        SetBlipAsShortRange(blip, true)
+
+        BeginTextCommandSetBlipName('STRING')
+        AddTextComponentSubstringPlayerName(text)
+        EndTextCommandSetBlipName(blip)
+
+        return blip
+    end
+
     local Blips = {}
 
     function InitHouseBlips()
@@ -242,25 +241,25 @@ if Config.EnableHouseBlips then
             Blips[key] = CreatePublicBlip(blip.coords, "Cambriolage", 119, 1, 0.8)
         end
     end
-end
 
-if Config.EnableHouseBlips then
     CreateThread(function()
         InitHouseBlips()
     end)
-end
 
-function ClearBlips()
-    for k, blip in pairs(Blips) do
-        if blip then
-            RemoveBlip(blip)
+    function ClearBlips()
+        for k, blip in pairs(Blips) do
+            if blip then
+                RemoveBlip(blip)
+            end
         end
     end
-end
 
-AddEventHandler('onClientResourceStart', function(resourceName)
-    if (GetCurrentResourceName() == resourceName) then
-        ClearBlips()
-        InitHouseBlips()
-    end
-end)
+
+    AddEventHandler('onClientResourceStart', function(resourceName)
+        if (GetCurrentResourceName() == resourceName) then
+            ClearBlips()
+            InitHouseBlips()
+        end
+    end)
+
+end
