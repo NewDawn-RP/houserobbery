@@ -195,7 +195,7 @@ end)
 lib.callback.register('houserobbery:callback:startSkillcheck', function(Difficulty)
     LoadAnimDict('veh@break_in@0h@p_m_one@')
     TaskPlayAnim(cache.ped, 'veh@break_in@0h@p_m_one@', 'std_force_entry_rds', 3.0, 3.0, -1, 17, 0, false, false, false)
-    local Success = lib.skillCheck(Difficulty)
+    local Success = exports['lockpick']:startLockpick(Difficulty)
     ClearPedTasks(cache.ped)
     RemoveAnimDict('veh@break_in@0h@p_m_one@')
     return Success

@@ -110,24 +110,25 @@ exports('houselockpick', function(event, item, inventory, slot, data)
         --if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
         if GlobalState["police"] < Config.MinimumHouseRobberyPolice then 
             if Config.NotEnoughCopsNotify then 
-                TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') 
+                TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error')
             end 
             return 
         end
-    
-        local Result = lib.callback.await('houserobbery:callback:checkTime', Player.source)
-    
-        if not Result then return end
+        --local Result = lib.callback.await('houserobbery:callback:checkTime', Player.source)
+        --print(Result)
+        --if not Result then return end
     
         local Skillcheck = lib.callback.await('houserobbery:callback:startSkillcheck', Player.source, Config.Interiors[House.interior].skillcheck)
     
         if Skillcheck then
+
             Config.Houses[ClosestHouseIndex].opened = true
             TriggerClientEvent('ox_lib:notify', Player.source, {description = locale('notify.success_skillcheck'), title = "Réussite !", type = "success"})
             TriggerClientEvent('houserobbery:client:syncconfig', -1, Config.Houses[ClosestHouseIndex], ClosestHouseIndex)
             EnterHouse(Player.source, Config.Interiors[House.interior].exit, House.routingbucket, ClosestHouseIndex)
             --PoliceAlert(locale('notify.police_alert'), House)
             TriggerClientEvent("ps-dispatch:client:houserobbery", Player.source, Config.Houses[ClosestHouseIndex].coords)
+            local success, response = exports.ox_inventory:AddItem(inventory.id, 'advlockpick', 1)
         else
             TriggerClientEvent('ox_lib:notify', Player.source, {description = locale('notify.fail_skillcheck'), title = "Erreur !", type = "error"})
 

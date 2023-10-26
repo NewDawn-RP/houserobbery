@@ -8,7 +8,7 @@ Config.Hours = {
 Config.EnableHouseBlips = false
 
 Config.FingerDropChance = 50
-Config.MinimumHouseRobberyPolice = 1
+Config.MinimumHouseRobberyPolice = 2
 Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
 --Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
@@ -40,7 +40,7 @@ Config.Rewards = {
 Config.Interiors = {
     [1] = {
         exit = vector4(266.11, -1007.61, -101.01, 357.68),
-        skillcheck = { 'easy', 'medium', 'easy', 'medium' },
+        skillcheck = 5,
         callCopsTimeout = 30000,
         loot = {
             { coords = vector3(265.97, -999.46, -99.01), pool = {1, 2, 3, 4, 5, 6} },
@@ -58,7 +58,7 @@ Config.Interiors = {
     },
     [2] = {
         exit = vector4(346.55, -1012.83, -99.2, 5.8),
-        skillcheck = { 'medium', 'easy', 'hard', 'medium' },
+        skillcheck = 4,
         callCopsTimeout = 25000,
         -- loot = {
         --     { coords = vector3(346.15, -1001.71, -99.2), pool = {1, 2, 3, 4, 5, 6} },
@@ -95,7 +95,7 @@ Config.Interiors = {
     },
     [3] = {
         exit = vector4(-174.27, 497.71, 137.65, 191.5),
-        skillcheck = { 'hard', 'medium', 'hard', 'medium' },
+        skillcheck = 3,
         callCopsTimeout = 20000,
         loot = {
             { coords = vector3(-170.21, 495.82, 137.65), pool = {1, 2, 3, 4, 5, 6} },
@@ -115,6 +115,7 @@ Config.Interiors = {
         },
         pickups = {
             { coords = vector3(-165.26, 495.01, 137.65), model = 'prop_micro_02', reward = 'microwave' },
+            { coords = vector3(-162.5906, 482.4800, 137.2443), model = 'prop_tv_flat_03', reward = 'small_tv' },
             { coords = vector3(-165.89, 497.0, 137.65), model = 'prop_toaster_01', reward = 'toaster' }
         }
     },
@@ -123,17 +124,17 @@ Config.Interiors = {
 Config.Houses = {
     [1] = {
         routingbucket = 600,
-        interior = 1,
+        interior = 3,
         opened = false,
         coords = vector3(325.0551, 537.2365, 153.8681),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 12
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 3
             }
         },
         loot = {},
@@ -141,17 +142,17 @@ Config.Houses = {
     },
     [2] = {
         routingbucket = 601,
-        interior = 1,
+        interior = 3,
         opened = false,
         coords = vector3(315.8076, 501.9944, 153.1797),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 12
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 3
             }
         },
         loot = {},
@@ -159,17 +160,17 @@ Config.Houses = {
     },
     [3] = {
         routingbucket = 602,
-        interior = 1,
+        interior = 3,
         opened = false,
         coords = vector3(331.4849, 465.2738, 151.2539),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 12
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 3
             }
         },
         loot = {},
@@ -177,17 +178,17 @@ Config.Houses = {
     },
     [4] = {
         routingbucket = 603,
-        interior = 1,
+        interior = 3,
         opened = false,
         coords = vector3(346.6249, 440.6655, 147.7025),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 12
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 3
             }
         },
         loot = {},
@@ -195,17 +196,17 @@ Config.Houses = {
     },
     [5] = {
         routingbucket = 604,
-        interior = 1,
+        interior = 3,
         opened = false,
         coords = vector3(374.0694, 427.7520, 145.6841),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 12
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 3
             }
         },
         loot = {},
@@ -213,17 +214,17 @@ Config.Houses = {
     },
     [6] = {
         routingbucket = 605,
-        interior = 1,
+        interior = 2,
         opened = false,
-        coords = vector3(224.0175, 513.7964, 140.7666),
+        coords = vector3(1100.7104, -411.3089, 67.5549),
         setup = {
             loot = {
-                min = 3,
-                max = 7
+                min = 4,
+                max = 9
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -233,15 +234,15 @@ Config.Houses = {
         routingbucket = 606,
         interior = 2,
         opened = false,
-        coords = vector3(167.4602, 473.8024, 142.5133),
+        coords = vector3(1099.4945, -438.6662, 67.7906),
         setup = {
             loot = {
                 min = 4,
-                max = 12
+                max = 9
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -251,15 +252,15 @@ Config.Houses = {
         routingbucket = 607,
         interior = 2,
         opened = false,
-        coords = vector3(119.8064, 494.5789, 147.3429),
+        coords = vector3(1098.5031, -464.4470, 67.3194),
         setup = {
             loot = {
                 min = 4,
-                max = 12
+                max = 9
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -269,15 +270,15 @@ Config.Houses = {
         routingbucket = 608,
         interior = 2,
         opened = false,
-        coords = vector3(79.9768, 486.2426, 148.2017),
+        coords = vector3(1090.4574, -484.2410, 65.6600),
         setup = {
             loot = {
                 min = 4,
-                max = 12
+                max = 9
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -287,15 +288,15 @@ Config.Houses = {
         routingbucket = 609,
         interior = 2,
         opened = false,
-        coords = vector3(57.5175, 449.7034, 147.0308),
+        coords = vector3(1046.5104, -497.7671, 64.0794),
         setup = {
             loot = {
                 min = 4,
-                max = 12
+                max = 9
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -303,13 +304,13 @@ Config.Houses = {
     },
     [11] = {
         routingbucket = 610,
-        interior = 2,
+        interior = 1,
         opened = false,
-        coords = vector3(42.7561, 468.8435, 148.0961),
+        coords = vector3(-1054.0372, -1000.1440, 6.4105),
         setup = {
             loot = {
-                min = 4,
-                max = 12
+                min = 3,
+                max = 7
             },
             pickups = {
                 min = 1,
@@ -321,13 +322,13 @@ Config.Houses = {
     },
     [12] = {
         routingbucket = 611,
-        interior = 2,
+        interior = 1,
         opened = false,
-        coords = vector3(-7.9923, 467.8922, 145.8457),
+        coords = vector3(-1041.6211, -1025.7892, 2.7450),
         setup = {
             loot = {
-                min = 4,
-                max = 12
+                min = 3,
+                max = 7
             },
             pickups = {
                 min = 1,
@@ -341,7 +342,7 @@ Config.Houses = {
         routingbucket = 612,
         interior = 1,
         opened = false,
-        coords = vector3(-66.9801, 489.9948, 144.8848),
+        coords = vector3(-1022.2014, -1022.9698, 2.1504),
         setup = {
             loot = {
                 min = 3,
@@ -359,7 +360,7 @@ Config.Houses = {
         routingbucket = 613,
         interior = 1,
         opened = false,
-        coords = vector3(-230.2332, 487.9367, 128.7680),
+        coords = vector3(-990.4733, -975.9221, 4.2227),
         setup = {
             loot = {
                 min = 3,
@@ -375,13 +376,13 @@ Config.Houses = {
     },
     [15] = {
         routingbucket = 614,
-        interior = 2,
+        interior = 1,
         opened = false,
-        coords = vector3(-355.2990, 469.9851, 112.4995),
+        coords = vector3(-1065.6318, -1055.4272, 6.4117),
         setup = {
             loot = {
                 min = 3,
-                max = 12
+                max = 7
             },
             pickups = {
                 min = 1,
@@ -393,17 +394,17 @@ Config.Houses = {
     },
     [16] = {
         routingbucket = 615,
-        interior = 2,
+        interior = 1,
         opened = false,
-        coords = vector3(-579.5901, 732.7120, 184.2472),
+        coords = vector3(392.6124, 2634.1057, 44.6724),
         setup = {
             loot = {
-                min = 6,
-                max = 12
+                min = 2,
+                max = 6
             },
             pickups = {
                 min = 1,
-                max = 2
+                max = 1
             }
         },
         loot = {},
@@ -411,13 +412,13 @@ Config.Houses = {
     },
     [17] = {
         routingbucket = 616,
-        interior = 2,
+        interior = 1,
         opened = false,
-        coords = vector3(-595.9995, 780.4598, 189.3096),
+        coords = vector3(341.7206, 2615.1479, 44.6724),
         setup = {
             loot = {
-                min = 6,
-                max = 12
+                min = 2,
+                max = 6
             },
             pickups = {
                 min = 1,
@@ -431,7 +432,7 @@ Config.Houses = {
         routingbucket = 617,
         interior = 1,
         opened = false,
-        coords = vector3(-599.6794, 807.5953, 191.5224),
+        coords = vector3(382.8517, 2576.4929, 44.5282),
         setup = {
             loot = {
                 min = 2,
@@ -449,7 +450,7 @@ Config.Houses = {
         routingbucket = 618,
         interior = 1,
         opened = false,
-        coords = vector3(-654.8705, 802.9325, 198.9914),
+        coords = vector3(470.9595, 2608.3232, 44.4772),
         setup = {
             loot = {
                 min = 2,
@@ -467,7 +468,7 @@ Config.Houses = {
         routingbucket = 619,
         interior = 1,
         opened = false,
-        coords = vector3(-606.1866, 672.2381, 151.6143),
+        coords = vector3(506.5380, 2610.1570, 43.9781),
         setup = {
             loot = {
                 min = 2,
@@ -483,17 +484,17 @@ Config.Houses = {
     },
     [21] = {
         routingbucket = 620,
-        interior = 1,
+        interior = 2,
         opened = false,
-        coords = vector3(-564.3889, 684.7552, 146.6333),
+        coords = vector3(-2977.2004, 609.6118, 20.2460),
         setup = {
             loot = {
-                min = 2,
-                max = 6
+                min = 3,
+                max = 7
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
             }
         },
         loot = {},
@@ -501,17 +502,71 @@ Config.Houses = {
     },
     [22] = {
         routingbucket = 621,
-        interior = 3,
+        interior = 2,
         opened = false,
-        coords = vector3(-559.6687, 664.1594, 145.4570),
+        coords = vector3(-2972.5398, 642.3098, 25.9916),
         setup = {
             loot = {
-                min = 2,
-                max = 6
+                min = 3,
+                max = 7
             },
             pickups = {
                 min = 1,
-                max = 1
+                max = 2
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [23] = {
+        routingbucket = 622,
+        interior = 2,
+        opened = false,
+        coords = vector3(-2995.0313, 682.5016, 25.0439),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 2
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [24] = {
+        routingbucket = 623,
+        interior = 2,
+        opened = false,
+        coords = vector3(-2992.8298, 707.4495, 28.4967),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 2
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [25] = {
+        routingbucket = 624,
+        interior = 2,
+        opened = false,
+        coords = vector3(-3017.0569, 746.7545, 27.7828),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 2
             }
         },
         loot = {},
