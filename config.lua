@@ -13,6 +13,7 @@ Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
 --Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
 Config.RequiredItems = { "advlockpick", }
+Config.PoliceJobsName = {"police", "fib", "bcso"}
 
 -- Each key is it's own 'pool'. You can create as many as you want and add them to Config.Interiors per loot spot you add.
 -- togive determines how many random unique items to give. toget determines the amount of said unique item you should get
