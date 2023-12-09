@@ -13,6 +13,7 @@ Config.NotEnoughCopsNotify = true
 Config.UseDrawText = false
 --Config.RequiredItems = { 'advancedlockpick', 'screwdriverset' }
 Config.RequiredItems = { "advlockpick", }
+Config.PoliceJobsName = {"police", "fib", "bcso"}
 
 -- Each key is it's own 'pool'. You can create as many as you want and add them to Config.Interiors per loot spot you add.
 -- togive determines how many random unique items to give. toget determines the amount of said unique item you should get
@@ -567,6 +568,186 @@ Config.Houses = {
             pickups = {
                 min = 1,
                 max = 2
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [26] = {
+        routingbucket = 625,
+        interior = 1,
+        opened = false,
+        coords = vector3(-332.5724, 6302.1445, 33.0902),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [27] = {
+        routingbucket = 626,
+        interior = 1,
+        opened = false,
+        coords = vector3(-280.5523, 6350.6606, 32.6008),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [28] = {
+        routingbucket = 627,
+        interior = 1,
+        opened = false,
+        coords = vector3(-247.5646, 6370.1509, 31.8456),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [29] = {
+        routingbucket = 628,
+        interior = 1,
+        opened = false,
+        coords = vector3(-149.7876, 6416.1167, 31.9159),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [30] = {
+        routingbucket = 629,
+        interior = 1,
+        opened = false,
+        coords = vector3(-166.8375, 6439.6416, 31.9159),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [31] = {
+        routingbucket = 630,
+        interior = 1,
+        opened = false,
+        coords = vector3(1663.8667, 4739.6235, 42.0124),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [32] = {
+        routingbucket = 631,
+        interior = 1,
+        opened = false,
+        coords = vector3(1725.4011, 4642.5322, 43.8755),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [33] = {
+        routingbucket = 632,
+        interior = 1,
+        opened = false,
+        coords = vector3(1673.5652, 4658.2769, 43.6667),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [34] = {
+        routingbucket = 633,
+        interior = 1,
+        opened = false,
+        coords = vector3(1682.8776, 4689.7207, 43.0662),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
+            }
+        },
+        loot = {},
+        pickups = {}
+    },
+    [35] = {
+        routingbucket = 634,
+        interior = 1,
+        opened = false,
+        coords = vector3(1719.1106, 4677.2686, 43.6558),
+        setup = {
+            loot = {
+                min = 3,
+                max = 7
+            },
+            pickups = {
+                min = 1,
+                max = 1
             }
         },
         loot = {},

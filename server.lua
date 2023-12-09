@@ -2,6 +2,16 @@ lib.locale()
 local StartedLoot = {}
 local StartedPickup = {}
 
+local function checkPoliceCount()
+    local policeCount = 0
+    for key, value in pairs(Config.PoliceJobsName) do
+        if GlobalState[value] ~= nil then
+            policeCount = policeCount + GlobalState[value]
+        end
+    end
+    return policeCount
+end
+
 local function GetClosestHouse(Coords)
     local ClosestHouseIndex
     for i = 1, #Config.Houses do
@@ -104,13 +114,23 @@ exports('houselockpick', function(event, item, inventory, slot, data)
         local House = Config.Houses[ClosestHouseIndex]
         --local Amount = QBCore.Functions.GetDutyCountType('leo')
     
-        if not House then return end
+        if not House then 
+            local success = exports.ox_inventory:AddItem(Player.source, item, 1)
+            TriggerClientEvent('ox_lib:notify', Player.source, {
+                title = 'Pas de maison!',
+                position = "center-right",
+                type = 'error'
+            })
+            return 
+        end
         if House.opened then return end
         --if not IsAdvanced and not Player.Functions.GetItemByName(Config.RequiredItems[2]) then return end
         --if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
-        if GlobalState["police"] < Config.MinimumHouseRobberyPolice then 
+        if checkPoliceCount() < Config.MinimumHouseRobberyPolice then 
+            print("3333")
             if Config.NotEnoughCopsNotify then 
                 TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error')
+                local success = exports.ox_inventory:AddItem(Player.source, item, 1)
             end 
             return 
         end
