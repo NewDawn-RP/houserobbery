@@ -127,7 +127,6 @@ exports('houselockpick', function(event, item, inventory, slot, data)
         --if not IsAdvanced and not Player.Functions.GetItemByName(Config.RequiredItems[2]) then return end
         --if Amount < Config.MinimumHouseRobberyPolice then if Config.NotEnoughCopsNotify then TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error') end return end
         if checkPoliceCount() < Config.MinimumHouseRobberyPolice then 
-            print("3333")
             if Config.NotEnoughCopsNotify then 
                 TriggerClientEvent('esx:showNotification', Player.source, locale('notify.no_police', Config.MinimumHouseRobberyPolice ), 'error')
                 local success = exports.ox_inventory:AddItem(Player.source, item, 1)
