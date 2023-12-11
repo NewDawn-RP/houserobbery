@@ -33,7 +33,6 @@ Config.Rewards = {
     { items = { 'necklace' }, togive = { min = 1, max = 1 }, toget = { min = 2, max = 7 } },
     { items = { 'black_money' }, togive = { min = 1, max = 1 }, toget = { min = 1, max = 343 } },
     { items = { "jewels" }, togive = { min = 1, max = 1 }, toget = { min = 2, max = 7 } },
-    { items = { "diamond" }, togive = { min = 1, max = 1 }, toget = { min = 1, max = 2 } },
 }
 
 -- Pre set interiors to use in Config.Houses. Shouldn't touch this unless you know what you are doing. You can however change the skillcheck difficulty.
